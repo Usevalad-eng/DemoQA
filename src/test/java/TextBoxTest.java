@@ -4,8 +4,7 @@ import org.junit.jupiter.api.Test;
 
 import static com.codeborne.selenide.Condition.text;
 import static com.codeborne.selenide.Condition.visible;
-import static com.codeborne.selenide.Selenide.$;
-import static com.codeborne.selenide.Selenide.open;
+import static com.codeborne.selenide.Selenide.*;
 
 public class TextBoxTest {
     @BeforeAll
@@ -16,7 +15,6 @@ public class TextBoxTest {
 
     @Test
     void textBoxTest(){
-
         open("/text-box");
         $(".text-center").shouldBe(visible);
         $("#userName").setValue("Vasia");
@@ -25,10 +23,20 @@ public class TextBoxTest {
         $("#permanentAddress").setValue("vasia street, 21");
         $("#submit").scrollTo().click();
 
-        System.out.println("iii");
         $("#name").shouldHave(text("Vasia"));
         $("#email").shouldHave(text("vasia@gmail.com"));
         $("#output").$("#currentAddress").shouldHave(text("vasia street, 20"));
         $("#output").$("#permanentAddress").shouldHave(text("vasia street, 21"));
+    }
+
+    @Test
+    void formsTest(){
+        open("/automation-practice-form");
+        $(".text-center").shouldBe(visible);
+        $("#firstName").setValue("Vasiliy");
+        $("#lastName").setValue("Strelnikov");
+        $x("//label[@class ='custom-control-label' and text() = 'Male']").click();
+        $("#userNumber").setValue("Strelnikov");
+        $("#submit").scrollTo().click();
     }
 }
