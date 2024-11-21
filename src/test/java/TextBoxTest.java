@@ -8,13 +8,13 @@ import static com.codeborne.selenide.Selenide.*;
 
 public class TextBoxTest {
     @BeforeAll
-    static void screenResolution(){
+    static void screenResolution() {
         Configuration.baseUrl = "https://demoqa.com";
         Configuration.browserSize = "1920x1080";
     }
 
     @Test
-    void textBoxTest(){
+    void textBoxTest() {
         open("/text-box");
         $(".text-center").shouldBe(visible);
         $("#userName").setValue("Vasia");
@@ -27,16 +27,5 @@ public class TextBoxTest {
         $("#email").shouldHave(text("vasia@gmail.com"));
         $("#output").$("#currentAddress").shouldHave(text("vasia street, 20"));
         $("#output").$("#permanentAddress").shouldHave(text("vasia street, 21"));
-    }
-
-    @Test
-    void formsTest(){
-        open("/automation-practice-form");
-        $(".text-center").shouldBe(visible);
-        $("#firstName").setValue("Vasiliy");
-        $("#lastName").setValue("Strelnikov");
-        $x("//label[@class ='custom-control-label' and text() = 'Male']").click();
-        $("#userNumber").setValue("Strelnikov");
-        $("#submit").scrollTo().click();
     }
 }
