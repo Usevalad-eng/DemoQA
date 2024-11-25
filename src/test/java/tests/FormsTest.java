@@ -1,13 +1,11 @@
+package tests;
+
 import com.codeborne.selenide.ClickOptions;
+import pages.RegistrationPage;
 import com.codeborne.selenide.Configuration;
-import com.codeborne.selenide.Selenide;
-import com.codeborne.selenide.selector.ByText;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
-import org.openqa.selenium.By;
-import org.openqa.selenium.WebElement;
 
-import java.io.File;
 import java.time.Duration;
 
 import static com.codeborne.selenide.Condition.*;
@@ -17,11 +15,58 @@ import static com.codeborne.selenide.Selenide.$;
 
 public class FormsTest {
 
+    RegistrationPage registrationPage = new RegistrationPage();
     @BeforeAll
     static void screenResolution() {
         Configuration.baseUrl = "https://demoqa.com";
         Configuration.browserSize = "1920x1080";
     }
+
+    @Test
+    void successfulRegistrationFormsTest(){
+        /*new RegistrationPage().openRegistrationForm();
+        new RegistrationPage().setFirstName();
+        new RegistrationPage().setLastName();*/
+        registrationPage.openRegistrationForm();
+        registrationPage.setFirstName("Vasiliy");
+        registrationPage.setLastName("Strelnikov");
+        registrationPage.setEmail("vas@mail.ru");
+        registrationPage.setPhone("1234567890");
+        registrationPage.selectGender("Male");
+        registrationPage.setBirthday("July", "2004", "30");
+        $("#subjectsInput").setValue("Maths").pressEnter();
+        $("#hobbiesWrapper").$(byText("Sports")).click();
+        $("#uploadPicture").uploadFromClasspath("1.png");
+        $("#currentAddress").setValue("address");
+        registrationPage.selectState("NCR");
+        registrationPage.selectCity("Delhi");
+        $("#submit").scrollTo().click();
+
+        $(".modal-dialog").should(appear);
+        $("#example-modal-sizes-title-lg").shouldHave(text("Thanks for submitting the form"));
+        $(".table-responsive").shouldHave(text("Vasiliy"), text("Strelnikov"), text("vas@mail.ru"),
+                text("1234567890"), text("Male"), text("address"), text("Maths"), text("Sports"));
+        /*$x("//td[text() = 'Vasiliy Strelnikov']").shouldHave(text("Vasiliy Strelnikov"));
+        $x("//td[text() = '1234567890']").shouldHave(text("1234567890"));
+        $x("//td[text() = 'Male']").shouldHave(text("Male"));
+        $x("//td[text() = 'vas@mail.ru']").shouldHave(text("vas@mail.ru"));
+        $x("//td[text() = 'address']").shouldHave(text("address"));
+        $x("//td[text() = 'Maths']").shouldHave(text("Maths"));
+        $x("//td[text() = 'Sports']").shouldHave(text("Sports"));*/
+    }
+
+    /*@Test
+    void successfulRegistrationFormsTest(){
+        *//*new RegistrationPage().openRegistrationForm();
+        new RegistrationPage().setFirstName();
+        new RegistrationPage().setLastName();*//*
+        registrationPage.openRegistrationForm();
+                        .setFirstName("Vasiliy");
+                        .setLastName("Strelnikov");
+                        .setEmail("vas@mail.ru");
+                        .setPhone("1234567890");
+                        .setLastName("Male");
+    }*/
 
     @Test
     void formsTest() {
@@ -54,7 +99,7 @@ public class FormsTest {
         $(".modal-dialog").should(appear);
         $("#example-modal-sizes-title-lg").shouldHave(text("Thanks for submitting the form"));
         //$x("//*[@id='example-modal-sizes-title-lg']").shouldHave(text("Thanks for submitting the form"));
-        $(".table-responsive").shouldHave(text("Vasiliy"), text("Strelnikov"));
+        $(".table-responsive").shouldHave(text("Vasiliy"), text("Strelnikov"), text("vas@mail.ru"));
         $x("//td[text() = 'Vasiliy Strelnikov']").shouldHave(text("Vasiliy Strelnikov"));
         $x("//td[text() = '1234567890']").shouldHave(text("1234567890"));
         $x("//td[text() = 'Male']").shouldHave(text("Male"));
