@@ -5,6 +5,7 @@ import com.codeborne.selenide.Condition;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.Arguments;
 import org.junit.jupiter.params.provider.MethodSource;
+import tests.base.BaseTest;
 
 import java.util.List;
 import java.util.stream.Stream;
@@ -12,7 +13,7 @@ import java.util.stream.Stream;
 import static com.codeborne.selenide.Selenide.$$;
 import static com.codeborne.selenide.Selenide.open;
 
-public class JUDemoTest {
+public class JUDemoTest extends BaseTest {
 
     static Stream<Arguments> testSelenide() {
         return Stream.of(

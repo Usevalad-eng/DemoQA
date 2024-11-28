@@ -1,6 +1,7 @@
 package pages;
 
 import pages.components.Calendar;
+import pages.components.ModalDialog;
 
 import static com.codeborne.selenide.Condition.*;
 import static com.codeborne.selenide.Selectors.byText;
@@ -9,6 +10,7 @@ import static com.codeborne.selenide.Selenide.*;
 public class RegistrationPage {
 
     Calendar calendar = new Calendar();
+    ModalDialog modalDialog = new ModalDialog();
 
     public void openRegistrationForm(){
         open("/automation-practice-form");
@@ -78,7 +80,7 @@ public class RegistrationPage {
         $("#submit").scrollTo().click();
     }
 
-    public void modalDialogShouldAppear(){
+    /*public void modalDialogShouldAppear(){
         $(".modal-dialog").should(appear);
         $("#example-modal-sizes-title-lg").shouldHave(text("Thanks for submitting the form"));
     }
@@ -87,5 +89,14 @@ public class RegistrationPage {
                                           String gender,String address,String subject,String hobby){
         $(".table-responsive").shouldHave(text("Vasiliy"), text("Strelnikov"), text("vas@mail.ru"),
                 text("1234567890"), text("Male"), text("address"), text("Maths"), text("Sports"));
+    }*/
+
+    public void modalDialogShouldAppear(){
+        modalDialog.modalDialogShouldAppearing();
+    }
+
+    public void modalDialogShouldHaveText(String name, String surname,String email,String phone,
+                                          String gender,String address,String subject,String hobby){
+        modalDialog.modalDialogShouldHaveTexting(name, surname, email, phone, gender, address, subject, hobby);
     }
 }
