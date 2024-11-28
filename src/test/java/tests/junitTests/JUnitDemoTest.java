@@ -1,15 +1,17 @@
 package tests.junitTests;
 
+import com.codeborne.selenide.CollectionCondition;
 import com.codeborne.selenide.Selenide;
+import com.codeborne.selenide.ex.Strings;
 import org.junit.jupiter.api.*;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.CsvFileSource;
 import org.junit.jupiter.params.provider.CsvSource;
+import org.junit.jupiter.params.provider.ValueSource;
 import tests.base.BaseTest;
 
 import static com.codeborne.selenide.Condition.text;
-import static com.codeborne.selenide.Selenide.$;
-import static com.codeborne.selenide.Selenide.open;
+import static com.codeborne.selenide.Selenide.*;
 
 
 public class JUnitDemoTest extends BaseTest {
@@ -56,5 +58,15 @@ public class JUnitDemoTest extends BaseTest {
         //open("https://www.google.com/");
         $("[name = q]").setValue(prodName).pressEnter();
         $("#search").shouldHave(text(url));
+    }
+
+    @ValueSource(
+            strings = {"allure testops", "selenide"}
+    )
+    @ParameterizedTest(name = "url {1} must be on page {0}")
+    void demoParaTest(String prodName) {
+        //open("https://www.google.com/");
+        $("[name = q]").setValue(prodName).pressEnter();
+        $$("div[class = g]").shouldHave(CollectionCondition.sizeGreaterThan(3));
     }
 }
