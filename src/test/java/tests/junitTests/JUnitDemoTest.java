@@ -63,7 +63,7 @@ public class JUnitDemoTest extends BaseTest {
     @ValueSource(
             strings = {"allure testops", "selenide"}
     )
-    @ParameterizedTest(name = "url {1} must be on page {0}")
+    @ParameterizedTest(name = "collection must be > 3")
     void demoParaTest(String prodName) {
         //open("https://www.google.com/");
         $("[name = q]").setValue(prodName).pressEnter();

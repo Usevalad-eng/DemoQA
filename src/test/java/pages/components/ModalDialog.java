@@ -12,7 +12,7 @@ public class ModalDialog {
 
     public void modalDialogShouldHaveTexting(String name, String surname,String email,String phone,
                                           String gender,String address,String subject,String hobby){
-        $(".table-responsive").shouldHave(text("Vasiliy"), text("Strelnikov"), text("vas@mail.ru"),
-                text("1234567890"), text("Male"), text("address"), text("Maths"), text("Sports"));
+        $(".table-responsive").shouldHave(text(name), text(surname), text(email),
+                text(phone), text(gender), text(address), text(subject), text(hobby));
     }
 }
