@@ -1,4 +1,4 @@
-package tests.junitTests;
+package tests.junitTest;
 
 public enum Local {
 

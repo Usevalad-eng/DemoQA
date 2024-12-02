@@ -1,4 +1,4 @@
-package tests.junitTests;
+package tests.junitTest;
 
 import com.codeborne.selenide.CollectionCondition;
 import com.codeborne.selenide.Condition;

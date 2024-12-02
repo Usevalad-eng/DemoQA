@@ -1,0 +1,10 @@
+test data {
+           {'selenide', 'https://selenide.org'}
+           {'allure testops','https://qametra.io'}
+}
+
+-header
+-severity: blocker
+-preconditions
+-steps
+-expected result: url must be on the first page

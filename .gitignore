@@ -54,7 +54,7 @@ DemoQA/out/
 DemoQA/.idea/
 DemoQA/*.iml
 *.iml
-*.txt
+#*.txt
 
 target/
 DemoQA/target/
@@ -63,7 +63,7 @@ DemoQA/.idea/
 DemoQA/.allure/
 *.iml
 DemoQA/*.iml
-DemoQA/*.txt
+#DemoQA/*.txt
 
 # mpeltonen/sbt-idea plugin
 .idea_modules/
