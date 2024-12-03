@@ -36,8 +36,6 @@ public class FScriptTest {
         $(".react-datepicker__day--030:not(.react-datepicker__day--outside-month)").click();
         $("#subjectsInput").setValue("Maths").pressEnter();
         $("#hobbiesWrapper").$(byText("Sports")).click();
-        //$$x("//input[@type = 'checkbox']").get(0).click(ClickOptions.withTimeout(Duration.ofSeconds(1)));
-        //$("#uploadPicture").uploadFile(new File("src/test/resources/1.png"));
         $("#uploadPicture").uploadFromClasspath("1.png");
         $("#currentAddress").setValue("address");
         $("#state").scrollTo().click();
@@ -47,7 +45,6 @@ public class FScriptTest {
         $("#submit").scrollTo().click();
         $(".modal-dialog").should(appear);
         $("#example-modal-sizes-title-lg").shouldHave(text("Thanks for submitting the form"));
-        //$x("//*[@id='example-modal-sizes-title-lg']").shouldHave(text("Thanks for submitting the form"));
         $(".table-responsive").shouldHave(text("Vasiliy"), text("Strelnikov"), text("vas@mail.ru"));
         $x("//td[text() = 'Vasiliy Strelnikov']").shouldHave(text("Vasiliy Strelnikov"));
         $x("//td[text() = '1234567890']").shouldHave(text("1234567890"));
