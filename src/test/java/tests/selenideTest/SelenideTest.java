@@ -1,6 +1,7 @@
 package tests.selenideTest;
 
 import com.codeborne.selenide.Configuration;
+import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;
 
 import java.time.Duration;
@@ -26,7 +27,8 @@ public class SelenideTest {
         $(".header_secondary_container").shouldHave(text("Products"));
     }
 
-    /*@Test
+    @Test
+    @Disabled("Selenide test") //todo
     public void solntsevShouldBeTopContributor() {
         Configuration.browserSize = "1920x1080";
         Configuration.baseUrl = "https://github.com";
@@ -36,5 +38,5 @@ public class SelenideTest {
                 .ancestor(".BorderGrid-row")
                 .$$("ul li").first().hover();
         $$(".Popover .Popover-message").findBy(visible).shouldHave(text("Andrei Solntsev"));
-    }*/
+    }
 }

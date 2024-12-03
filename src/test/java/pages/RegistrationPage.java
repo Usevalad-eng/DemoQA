@@ -18,13 +18,6 @@ public class RegistrationPage {
         $(".text-center").shouldBe(visible);
     }
 
-    /*public RegistrationPage openRegistrationForm(){
-        open("/automation-practice-form");
-        executeJavaScript("$('#fixedban').remove();");
-        $(".text-center").shouldBe(visible);
-        return this;
-    }*/
-
     public void setFirstName(String value){
         $("#firstName").setValue(value);
     }
@@ -79,17 +72,6 @@ public class RegistrationPage {
     public void clickSubmitButton(){
         $("#submit").scrollTo().click();
     }
-
-    /*public void modalDialogShouldAppear(){
-        $(".modal-dialog").should(appear);
-        $("#example-modal-sizes-title-lg").shouldHave(text("Thanks for submitting the form"));
-    }
-
-    public void modalDialogShouldHaveText(String name, String surname,String email,String phone,
-                                          String gender,String address,String subject,String hobby){
-        $(".table-responsive").shouldHave(text("Vasiliy"), text("Strelnikov"), text("vas@mail.ru"),
-                text("1234567890"), text("Male"), text("address"), text("Maths"), text("Sports"));
-    }*/
 
     public void modalDialogShouldAppear(){
         modalDialog.modalDialogShouldAppearing();

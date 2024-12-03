@@ -9,6 +9,7 @@ public class FTest extends BaseTest {
     RegistrationPage regPage = new RegistrationPage();
 
     @Test
+
     void successfulRegistrationFormsTest(){
         regPage.openRegistrationForm();
         regPage.setFirstName("Vasiliy");

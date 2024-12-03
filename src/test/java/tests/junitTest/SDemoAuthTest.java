@@ -58,21 +58,6 @@ public class SDemoAuthTest extends BaseTest {
         Assertions.assertEquals(error, textOfMessage, "Error!");
     }
 
-    /*@ValueSource(
-            strings = {",, Epic sadface: Username is required",
-                       "standard_user,, Epic sadface: Password is required",
-                       ",secret_sauce, Epic sadface: Username is required",
-                       "standard, secret, Epic sadface: Username and password do not match any user in this service"}
-    )
-    @ParameterizedTest(name = "Saucedemo auth negative test using JUnit5")
-    void selenideSdemoAuth4(String login, String pass, String error){
-        open("https://www.saucedemo.com/");
-        $("#user-name").setValue(login);
-        $("#password").setValue(pass).pressEnter();
-        String textOfMessage = $x("//h3[@data-test = 'error']").getText();
-        Assertions.assertEquals(error, textOfMessage, "Error!");
-    }*/
-
     @Test
     @Disabled("some reason")
     void SdemoAuth(){

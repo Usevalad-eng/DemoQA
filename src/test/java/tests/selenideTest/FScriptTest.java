@@ -1,5 +1,6 @@
 package tests.selenideTest;
 
+import org.junit.jupiter.api.Disabled;
 import pages.RegistrationPage;
 import com.codeborne.selenide.Configuration;
 import org.junit.jupiter.api.BeforeAll;
@@ -11,8 +12,6 @@ import static com.codeborne.selenide.Selenide.*;
 import static com.codeborne.selenide.Selenide.$;
 
 public class FScriptTest {
-
-    RegistrationPage registrationPage = new RegistrationPage();
 
     @BeforeAll
     static void screenResolution() {
@@ -59,7 +58,8 @@ public class FScriptTest {
         $x("//td[text() = 'Sports']").shouldHave(text("Sports"));
     }
 
-    /*@Test
+    @Test
+    @Disabled("disabled test")
     void successfulRegistrationFormsTest(){
         new RegistrationPage().openRegistrationForm();
         new RegistrationPage().setFirstName("Vasiliy");
@@ -78,15 +78,5 @@ public class FScriptTest {
         new RegistrationPage().modalDialogShouldAppear();
         new RegistrationPage().modalDialogShouldHaveText("Vasiliy", "Strelnikov", "vas@mail.ru",
                 "1234567890", "Male", "address", "Maths", "Sports");
-    }*/
-
-    /*@Test
-    void successfulRegistrationFormsTest(){
-        registrationPage.openRegistrationForm();
-                        .setFirstName("Vasiliy");
-                        .setLastName("Strelnikov");
-                        .setEmail("vas@mail.ru");
-                        .setPhone("1234567890");
-                        .setLastName("Male");
-    }*/
+    }
 }
