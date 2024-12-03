@@ -8,3 +8,24 @@ test data {
 -preconditions
 -steps
 -expected result: url must be on the first page
+-------------------------------------------------------------------------------------------------------------------------------
+//Error  xls text message
+org.junit.platform.launcher.core.EngineDiscoveryOrchestrator lambda$logTestDescriptorExclusionReasons$7
+INFO: 0 containers and 1 tests were Method or class mismatch
+
+Cannot invoke "java.io.InputStream.read(byte[], int, int)" because "inputStream" is null
+java.lang.NullPointerException: Cannot invoke "java.io.InputStream.read(byte[], int, int)" because "inputStream" is null
+SFileParsingTest > xlsParsingTest() FAILED
+    java.lang.NullPointerException at SFileParsingTest.java:31
+1 test completed, 1 failed
+FAILURE: Build failed with an exception.
+* What went wrong:
+Execution failed for task ':test'.
+> There were failing tests. See the report at: file:///C:/Q1824/DemoQA/build/reports/tests/test/index.html
+* Try:
+> Run with --stacktrace option to get the stack trace.
+> Run with --info or --debug option to get more log output.
+> Run with --scan to get full insights.
+* Get more help at https://help.gradle.org
+BUILD FAILED in 1s
+4 actionable tasks: 4 executed

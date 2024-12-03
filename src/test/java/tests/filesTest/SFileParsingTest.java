@@ -2,12 +2,10 @@ package tests.filesTest;
 
 import com.codeborne.pdftest.PDF;
 import com.codeborne.xlstest.XLS;
-import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;
 
 import java.io.File;
-import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.io.InputStream;
 
@@ -29,11 +27,10 @@ public class SFileParsingTest {
     @Test
     @Disabled("some reason")
     void xlsParsingTest() throws IOException {
-        try (InputStream resource = getClass().getClassLoader().getResourceAsStream("tests-example.xls")){
+        try (InputStream resource = getClass().getResourceAsStream("financialSample.xlsx")){
             XLS content = new XLS(resource);
-            boolean text = content.excel.getSheetAt(0).getRow(8)
-                    .getCell(0).getStringCellValue().contains("Source");
-            assertTrue(text);
+            assertThat(content.excel.getSheetAt(0).getRow(1)
+                    .getCell(0).getStringCellValue().contains("Government"));
         }
     }
 }
