@@ -1,6 +1,6 @@
 package model;
 
-public class UserSettings {
+public class User {
 
     private String name;
     private String lastname;
@@ -17,9 +17,9 @@ public class UserSettings {
     private String state;
     private String city;
 
-    public UserSettings(String name, String lastname, String email, String phone, String gender,
-                        String month, String year, String day, String subject, String hobby, String file,
-                        String address, String state, String city) {
+    public User(String name, String lastname, String email, String phone, String gender,
+                String month, String year, String day, String subject, String hobby, String file,
+                String address, String state, String city) {
         this.name = name;
         this.lastname = lastname;
         this.email = email;
