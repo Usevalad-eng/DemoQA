@@ -3,15 +3,17 @@ package tests.selenideTest;
 import com.codeborne.selenide.Configuration;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
+import utils.RandomUtils;
 
 import static com.codeborne.selenide.Condition.*;
 import static com.codeborne.selenide.Condition.text;
 import static com.codeborne.selenide.Selectors.byText;
 import static com.codeborne.selenide.Selenide.*;
-import static com.codeborne.selenide.Selenide.$x;
 
 public class FDataTest {
 
+    RandomUtils rUtils = new RandomUtils();
+    public static String[] state = {"NCR", "Uttar Pradesh", "Haryana", "Rajasthan"};
    String userName = "Vasiliy";
 
     @BeforeAll
@@ -27,7 +29,7 @@ public class FDataTest {
         $(".text-center").shouldBe(visible);
         $("#firstName").setValue(userName);
         $("#lastName").setValue("Strelnikov");
-        $("#userEmail").setValue("vas@mail.ru");
+        $("#userEmail").setValue(rUtils.randomEmail());
         $("#userNumber").setValue("1234567890");
         $("#genterWrapper").$(byText("Male")).click();
         //$x("//label[@class ='custom-control-label' and text() = 'Male']").click();
@@ -40,7 +42,7 @@ public class FDataTest {
         $("#uploadPicture").uploadFromClasspath("1.png");
         $("#currentAddress").setValue("address");
         $("#state").scrollTo().click();
-        $("#stateCity-wrapper").$(byText("NCR")).click();
+        $("#stateCity-wrapper").$(byText(rUtils.randomItem(state))).click();
         $("#city").scrollTo().click();
         $("#stateCity-wrapper").$(byText("Delhi")).click();
         $("#submit").scrollTo().click();
