@@ -1,9 +1,12 @@
 package tests.selenideTest;
 
 import com.codeborne.selenide.Configuration;
+import com.github.javafaker.Faker;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
 import utils.RandomUtils;
+
+import java.time.LocalDateTime;
 
 import static com.codeborne.selenide.Condition.*;
 import static com.codeborne.selenide.Condition.text;
@@ -14,7 +17,8 @@ public class FDataTest {
 
     RandomUtils rUtils = new RandomUtils();
     public static String[] state = {"NCR", "Uttar Pradesh", "Haryana", "Rajasthan"};
-   String userName = "Vasiliy";
+    String userName = "Vasiliy";
+    Faker faker = new Faker();
 
     @BeforeAll
     static void screenResolution() {
@@ -28,7 +32,7 @@ public class FDataTest {
         executeJavaScript("$('#fixedban').remove();");
         $(".text-center").shouldBe(visible);
         $("#firstName").setValue(userName);
-        $("#lastName").setValue("Strelnikov");
+        $("#lastName").setValue(faker.superhero().name());
         $("#userEmail").setValue(rUtils.randomEmail());
         $("#userNumber").setValue("1234567890");
         $("#genterWrapper").$(byText("Male")).click();
@@ -48,14 +52,6 @@ public class FDataTest {
         $("#submit").scrollTo().click();
         $(".modal-dialog").should(appear);
         $("#example-modal-sizes-title-lg").shouldHave(text("Thanks for submitting the form"));
-
-        /*$(".table-responsive").shouldHave(text("Vasiliy"), text("Strelnikov"), text("vas@mail.ru"));
-        $x("//td[text() = 'Vasiliy Strelnikov']").shouldHave(text("Vasiliy Strelnikov"));
-        $x("//td[text() = '1234567890']").shouldHave(text("1234567890"));
-        $x("//td[text() = 'Male']").shouldHave(text("Male"));
-        $x("//td[text() = 'vas@mail.ru']").shouldHave(text("vas@mail.ru"));
-        $x("//td[text() = 'address']").shouldHave(text("address"));
-        $x("//td[text() = 'Maths']").shouldHave(text("Maths"));
-        $x("//td[text() = 'Sports']").shouldHave(text("Sports"));*/
+        System.out.println(LocalDateTime.now());
     }
 }
